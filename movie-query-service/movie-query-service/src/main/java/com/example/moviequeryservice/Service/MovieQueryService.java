@@ -1,10 +1,16 @@
 package com.example.moviequeryservice.Service;
 
+import com.example.moviequeryservice.Dto.MovieEvent;
+import com.example.moviequeryservice.Entity.Movie;
+import com.example.moviequeryservice.Exceptions.MovieNotFoundException;
+import com.example.moviequeryservice.Repository.MovieRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,49 +19,32 @@ public class MovieQueryService {
     @Autowired
     private MovieRepository movieRepository;
 
-    @Autowired
-    private KafkaTemplate<String,Object> kafkaTemplate;
-    public Movie createMovie(MovieEvent MovieEvent)
-    {
-        Movie newMovieDO = movieRepository.save(MovieEvent.getMovie());
-        MovieEvent event = new MovieEvent("CreateMovie", newMovieDO);
-        // kafkaTemplate.send("movie-event-topic",event);
-        return newMovieDO;
+    public List<Movie> getMovies() {
+        return movieRepository.findAll();
     }
 
-    @Transactional
-    public Movie updateMovie(UUID id, MovieEvent movieDto) throws MovieNotFoundException {
-        Optional<Movie> optionalCurrentMovie = movieRepository.findById(id);
-
-        if (optionalCurrentMovie.isPresent()) {
-            Movie currentMovie = optionalCurrentMovie.get();
-            Movie updatedMovie = movieDto.getMovie();
-
-            currentMovie.setImageSource(updatedMovie.getImageSource() != null ?
-                    updatedMovie.getImageSource() : currentMovie.getImageSource());
-            currentMovie.setDirector(updatedMovie.getDirector() != null ? updatedMovie.getDirector() : currentMovie.getDirector());
-            currentMovie.setTitle(updatedMovie.getTitle() != null ? updatedMovie.getTitle() : currentMovie.getTitle());
-            currentMovie.setDescription(updatedMovie.getDescription() != null ? updatedMovie.getDescription() : currentMovie.getDescription());
-            currentMovie.setProductionYear(updatedMovie.getProductionYear());
-
-            movieRepository.save(currentMovie);
-            MovieEvent event = new MovieEvent("UpdateMovie", currentMovie);
-            // kafkaTemplate.send("movie-event-topic",event);
-            return currentMovie;
-        } else {
-            throw new MovieNotFoundException(id);
-        }
-    }
-    @Transactional
-    public void deleteMovie(UUID id) throws MovieNotFoundException {
+    public Movie getMovie(UUID id) throws MovieNotFoundException{
         Optional<Movie> optionalMovie = movieRepository.findById(id);
 
-        if (optionalMovie.isPresent()) {
-            movieRepository.deleteById(id);
-            MovieEvent event = new MovieEvent("DeleteMovie", optionalMovie.get());
-            // kafkaTemplate.send("movie-event-topic",event);
-        } else {
+        if (!optionalMovie.isPresent())
             throw new MovieNotFoundException(id);
+
+        return optionalMovie.get();
+    }
+    @KafkaListener(topics = "movie-event-topic",groupId = "movie-event-group")
+    public void processMovieEvents(MovieEvent movieEvent) {
+        Movie movie = movieEvent.getMovie();
+        if (movieEvent.getEventType().equals("CreateMovie")) {
+            movieRepository.save(movie);
+        }
+        if (movieEvent.getEventType().equals("UpdateMovie")) {
+            Movie existingMovie = movieRepository.findById(movie.getId()).get();
+            existingMovie.setTitle(movie.getTitle());
+            existingMovie.setProductionYear(movie.getProductionYear());
+            existingMovie.setDirector(movie.getDirector());
+            existingMovie.setImageSource(movie.getImageSource());
+            existingMovie.setDescription(movie.getDescription());
+            movieRepository.save(existingMovie);
         }
     }
 

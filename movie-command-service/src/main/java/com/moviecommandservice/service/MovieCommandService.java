@@ -24,7 +24,7 @@ public class MovieCommandService {
     {
         Movie newMovieDO = movieRepository.save(MovieEvent.getMovie());
         MovieEvent event = new MovieEvent("CreateMovie", newMovieDO);
-       // kafkaTemplate.send("movie-event-topic",event);
+        kafkaTemplate.send("movie-event-topic",event);
         return newMovieDO;
     }
 
@@ -45,7 +45,7 @@ public class MovieCommandService {
 
             movieRepository.save(currentMovie);
             MovieEvent event = new MovieEvent("UpdateMovie", currentMovie);
-            // kafkaTemplate.send("movie-event-topic",event);
+            kafkaTemplate.send("movie-event-topic",event);
             return currentMovie;
         } else {
             throw new MovieNotFoundException(id);
@@ -58,7 +58,7 @@ public class MovieCommandService {
         if (optionalMovie.isPresent()) {
             movieRepository.deleteById(id);
             MovieEvent event = new MovieEvent("DeleteMovie", optionalMovie.get());
-            // kafkaTemplate.send("movie-event-topic",event);
+             kafkaTemplate.send("movie-event-topic",event);
         } else {
             throw new MovieNotFoundException(id);
         }
