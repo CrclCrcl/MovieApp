@@ -21,7 +21,7 @@ public class MovieQueryController {
     @GetMapping
     public ResponseEntity fetchAllMovies(){
         var list = queryService.getMovies();
-        if(list.size()<1) return new ResponseEntity<String>("There is no movies", HttpStatus.BAD_REQUEST);
+        if(list.isEmpty()) return new ResponseEntity<String>("There is no movies", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<List<Movie>>(list,HttpStatus.OK);
     }
 

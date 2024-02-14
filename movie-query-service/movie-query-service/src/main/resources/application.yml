@@ -1,14 +1,24 @@
 spring:
   kafka:
-    producer:
+    consumer:
       bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer:  org.springframework.kafka.support.serializer.JsonSerializer
-  jpa:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer:  org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'com.example.moviequeryservice.Dto.MovieEvent'
+  logging:
+    level:
+      org.springframework.kafka: DEBUG
+      org.apache.kafka: DEBUG
+jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-  datasource:
+    datasource:
     hikari:
       logging:
         level: DEBUG
