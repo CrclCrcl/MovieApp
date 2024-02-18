@@ -11,6 +11,21 @@ spring:
             add:
               type:
                 headers: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/slave
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+server:
+  port: 9494
+
+jwt:
+  auth:
+    converter:
+      resource-id: microservice-auth
+      attribute: preferred_username
+
   jpa:
     show-sql: true
     hibernate:
