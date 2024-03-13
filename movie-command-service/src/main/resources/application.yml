@@ -11,6 +11,8 @@ spring:
             add:
               type:
                 headers: false
+
+
   security:
     oauth2:
       resourceserver:

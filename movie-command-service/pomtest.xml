@@ -7,10 +7,10 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.1.2</version>
 	</parent>
-	<groupId>com.javatechie</groupId>
-	<artifactId>product-command-service</artifactId>
+	<groupId>com.tomasz</groupId>
+	<artifactId>movie-command-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>product-command-service</name>
+	<name>movie-command-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>18</java.version>

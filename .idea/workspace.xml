@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4028aa84-7960-490b-845c-65908444b2b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/com/example/commentcomandservice/controller/CommentCommandController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/com/example/commentcomandservice/dto/CommentEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/com/example/commentcomandservice/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/com/example/commentcomandservice/exceptions/CommentNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/com/example/commentcomandservice/repository/CommentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/com/example/commentcomandservice/service/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/securityConfig/JwtConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment-comand-service/comment-comand-service/src/main/java/securityConfig/securityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-command-service/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-command-service/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-command-service/pomtest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-command-service/pomtest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-command-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/movie-command-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-command-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-command-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-command-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/movie-command-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-command-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-command-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/src/main/java/com/example/moviequeryservice/MovieQueryServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/src/main/java/com/example/moviequeryservice/MovieQueryServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-query-service/movie-query-service/src/test/java/com/example/moviequeryservice/MovieQueryServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/movie-query-service/movie-query-service/src/test/java/com/example/moviequeryservice/MovieQueryServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/PG_VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/PG_VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/1/PG_VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/1/PG_VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/16384/16418" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/16384/16418" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/16384/16423" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/16384/16423" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/16384/16424" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/16384/16424" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/16384/16429" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/16384/16429" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/16384/PG_VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/16384/PG_VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/4/PG_VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/4/PG_VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/base/5/PG_VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/base/5/PG_VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/pg_hba.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/pg_hba.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/pg_ident.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/pg_ident.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/pg_stat/pgstat.stat" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/pg_stat/pgstat.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/pg_wal/000000010000000000000001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/pg_xact/0000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/postgresql.auto.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/postgresql.auto.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/postgresql.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/postgresql.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pg_data/postmaster.opts" beforeDir="false" afterPath="$PROJECT_DIR$/pg_data/postmaster.opts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2cKW42K9SlbY6PhIObDXZRwKpF4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4028aa84-7960-490b-845c-65908444b2b1" name="Changes" comment="" />
+      <created>1707860555158</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707860555158</updated>
+    </task>
+    <servers />
+  </component>
+</project>

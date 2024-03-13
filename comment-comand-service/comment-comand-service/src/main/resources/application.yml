@@ -1,0 +1,43 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          xxx-client:
+            provider: keycloak
+            client-id:
+            client-secret:
+            client-authentication-method: client_secret_basic
+            redirect-uri:
+        provider:
+          keycloak:
+            issuer-uri:
+              user-name-atributte: sub
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9696
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        acks: 1
+        spring:
+          json:
+            add:
+              type:
+                headers: false
+
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: 'com.example.commentcomandservice.dto.MovieEvent'
+  data:
+    mongodb:
+      user: test
+      password: passwordvalue
+      uri: mongodb://host:27017/db

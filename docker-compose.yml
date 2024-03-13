@@ -1,5 +1,8 @@
 version: '3.8'
 
+networks:
+  floppa:
+
 services:
   postgres:
     image: postgres:latest
@@ -14,12 +17,16 @@ services:
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     command: ["postgres", "-c", "max_prepared_transactions=100", "-c", "fsync=off"]
+    networks:
+      - floppa
 
   zookeeper:
     image: wurstmeister/zookeeper
     container_name: zookeeper
     ports:
       - "2181:2181"
+    networks:
+      - floppa
 
   kafka:
     image: wurstmeister/kafka
@@ -34,15 +41,54 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 6000
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - floppa
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     ports:
       - "8180:8180"
     environment:
-      KEYCLOAK_ADMIN: admin 
+      KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    command: 
-      - start-dev 
+    command:
+      - start-dev
       - --http-port=8180
+    volumes:
+      - ./keycloak/microservice-auth.json:/opt/keycloak/data/import/microservice-auth.json
+    networks:
+      - floppa
+
+  movie-command-service:
+    build:
+      context: ./movie-command-service
+      dockerfile: Dockerfile
+    ports:
+      - "9191:9191"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/movies
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: http://keycloak:8180/realms/slave
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: http://keycloak:8180/realms/slave/protocol/openid-connect/certs
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP-SERVERS: kafka:9092
+    depends_on:
+      - postgres
+    restart:
+      always
+    networks:
+      - floppa
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: commentcommandservice
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb_data:/data/db
+    networks:
+      - floppa    

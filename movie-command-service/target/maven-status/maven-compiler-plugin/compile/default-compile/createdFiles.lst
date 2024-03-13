@@ -1,0 +1,9 @@
+com\moviecommandservice\dto\MovieEvent.class
+com\moviecommandservice\entity\Movie.class
+com\moviecommandservice\SecurityConfig\JwtConverter.class
+com\moviecommandservice\service\MovieCommandService.class
+com\moviecommandservice\MovieCommandServiceApplication.class
+com\moviecommandservice\repository\MovieRepository.class
+com\moviecommandservice\controller\MovieCommandController.class
+com\moviecommandservice\exceptions\MovieNotFoundException.class
+com\moviecommandservice\SecurityConfig\SecurityConfig.class
